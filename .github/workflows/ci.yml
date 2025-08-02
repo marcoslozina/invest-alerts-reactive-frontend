@@ -8,7 +8,7 @@ on:
 
 jobs:
   install-and-build:
-    name: Lint and Build
+    name: Lint, Build & Test
     runs-on: ubuntu-latest
 
     steps:
@@ -28,3 +28,12 @@ jobs:
 
       - name: Build project
         run: npm run build
+
+      - name: Run tests with coverage
+        run: npm run test
+
+      - name: Upload coverage to Coveralls
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/lcov.info
