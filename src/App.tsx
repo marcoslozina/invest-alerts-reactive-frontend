@@ -1,23 +1,15 @@
-import { Routes, Route } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
-import React, { lazy } from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+import { HelmetProvider } from 'react-helmet-async';
 
-const Home = lazy(() => import('./pages/Home'));
-const NotFound = lazy(() => import('./pages/NotFound'));
-
-function App() {
-  return (
-    <>
-      <Helmet>
-        <title>Invest Alerts</title>
-        <meta name="description" content="Monitor de alertas cripto en tiempo real" />
-      </Helmet>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </>
-  );
-}
-
-export default App;
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <HelmetProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </HelmetProvider>
+  </React.StrictMode>
+);
