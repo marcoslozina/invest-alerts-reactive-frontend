@@ -1,25 +1,23 @@
-import React from 'react'
-import { useTranslation } from 'react-i18next'
-import Home from './pages/Home' // ✅ correcto si el archivo se llama Home.tsx
+import { Routes, Route } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import React, { lazy } from 'react';
+
+const Home = lazy(() => import('./pages/Home'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
-  const { t, i18n } = useTranslation()
-
-  const changeLanguage = (lang: 'en' | 'es') => i18n.changeLanguage(lang)
-
   return (
-    <div className="p-4">
-      <h1>{t('welcome')}</h1>
-      <p>{t('alert_threshold')}</p>
-      <div className="space-x-2 mb-4">
-        <button onClick={() => changeLanguage('en')}>EN</button>
-        <button onClick={() => changeLanguage('es')}>ES</button>
-      </div>
-
-      {/* ⬇️ Muestra la página principal */}
-      <Home />
-    </div>
-  )
+    <>
+      <Helmet>
+        <title>Invest Alerts</title>
+        <meta name="description" content="Monitor de alertas cripto en tiempo real" />
+      </Helmet>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
+  );
 }
 
-export default App
+export default App;
