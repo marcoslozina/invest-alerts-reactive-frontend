@@ -3,15 +3,15 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for invest-alerts-reactive-frontend/eslint.config.js</title>
+    <title>Code coverage report for invest-alerts-reactive-frontend/src/main.tsx</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../prettify.css" />
-    <link rel="stylesheet" href="../base.css" />
-    <link rel="shortcut icon" type="image/x-icon" href="../favicon.png" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(../sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">invest-alerts-reactive-frontend</a> eslint.config.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">invest-alerts-reactive-frontend/src</a> main.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/22</span>
+                <span class='fraction'>0/21</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/22</span>
+                <span class='fraction'>0/21</span>
             </div>
         
             
@@ -85,8 +85,9 @@
 <a name='L20'></a><a href='#L20'>20</a>
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a>
-<a name='L23'></a><a href='#L23'>23</a>
-<a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L23'></a><a href='#L23'>23</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -106,32 +107,28 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import js from '@eslint/js'<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span>
-<span class="cstat-no" title="statement not covered" >import globals from 'globals'</span>
-<span class="cstat-no" title="statement not covered" >import reactHooks from 'eslint-plugin-react-hooks'</span>
-<span class="cstat-no" title="statement not covered" >import reactRefresh from 'eslint-plugin-react-refresh'</span>
-<span class="cstat-no" title="statement not covered" >import tseslint from 'typescript-eslint'</span>
-<span class="cstat-no" title="statement not covered" >import { globalIgnores } from 'eslint/config'</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import React, { Suspense } from 'react';<span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" ></span></span></span>
+<span class="cstat-no" title="statement not covered" >import ReactDOM from 'react-dom/client';</span>
+<span class="cstat-no" title="statement not covered" >import App from './App';</span>
+<span class="cstat-no" title="statement not covered" >import './index.css';</span>
+<span class="cstat-no" title="statement not covered" >import './i18n';</span>
+<span class="cstat-no" title="statement not covered" >import { ErrorBoundary } from './components/ErrorBoundary';</span>
+<span class="cstat-no" title="statement not covered" >import { HelmetProvider } from 'react-helmet-async';</span>
+<span class="cstat-no" title="statement not covered" >import { BrowserRouter } from 'react-router-dom';</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export default tseslint.config([</span>
-<span class="cstat-no" title="statement not covered" >  globalIgnores(['dist']),</span>
-<span class="cstat-no" title="statement not covered" >  {</span>
-<span class="cstat-no" title="statement not covered" >    files: ['**/*.{ts,tsx}'],</span>
-<span class="cstat-no" title="statement not covered" >    extends: [</span>
-<span class="cstat-no" title="statement not covered" >      js.configs.recommended,</span>
-<span class="cstat-no" title="statement not covered" >      tseslint.configs.recommended,</span>
-<span class="cstat-no" title="statement not covered" >      reactHooks.configs['recommended-latest'],</span>
-<span class="cstat-no" title="statement not covered" >      reactRefresh.configs.vite,</span>
-<span class="cstat-no" title="statement not covered" >    ],</span>
-<span class="cstat-no" title="statement not covered" >    languageOptions: {</span>
-<span class="cstat-no" title="statement not covered" >      ecmaVersion: 2020,</span>
-<span class="cstat-no" title="statement not covered" >      globals: globals.browser,</span>
-<span class="cstat-no" title="statement not covered" >    },</span>
-<span class="cstat-no" title="statement not covered" >  },</span>
-<span class="cstat-no" title="statement not covered" >])</span>
+<span class="cstat-no" title="statement not covered" >ReactDOM.createRoot(document.getElementById('root')!).render(</span>
+<span class="cstat-no" title="statement not covered" >  &lt;React.StrictMode&gt;</span>
+<span class="cstat-no" title="statement not covered" >    &lt;HelmetProvider&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;ErrorBoundary&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;BrowserRouter&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;Suspense fallback={&lt;div&gt;Loading...&lt;/div&gt;}&gt;</span>
+<span class="cstat-no" title="statement not covered" >            &lt;App /&gt;</span>
+<span class="cstat-no" title="statement not covered" >          &lt;/Suspense&gt;</span>
+<span class="cstat-no" title="statement not covered" >        &lt;/BrowserRouter&gt;</span>
+<span class="cstat-no" title="statement not covered" >      &lt;/ErrorBoundary&gt;</span>
+<span class="cstat-no" title="statement not covered" >    &lt;/HelmetProvider&gt;</span>
+<span class="cstat-no" title="statement not covered" >  &lt;/React.StrictMode&gt;</span>
+<span class="cstat-no" title="statement not covered" >);</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -139,16 +136,16 @@
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-08-04T19:07:52.674Z
+                at 2025-08-04T19:51:35.434Z
             </div>
-        <script src="../prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="../sorter.js"></script>
-        <script src="../block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     

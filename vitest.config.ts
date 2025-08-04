@@ -4,14 +4,12 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   test: {
+    environment: 'jsdom', // 👈 clave para simular el DOM
     globals: true,
-    environment: 'jsdom',
-    setupFiles: './src/test/setup.ts',
+    setupFiles: './vitest.setup.ts', // archivo de setup
     coverage: {
-        provider: 'v8',
-        reporter: ['text', 'lcov', 'html', 'vitest-badge-reporter'],
-        reportsDirectory: './coverage',
-        exclude: ['node_modules/', 'src/main.tsx'],
+      provider: 'v8',
+      reporter: ['text', 'lcov'],
     },
   },
 });
