@@ -8,9 +8,10 @@ Frontend profesional para el sistema **Invest Alerts**, una app de alertas de pr
 
 ![CI](https://github.com/marcoslozina/invest-alerts-reactive-frontend/actions/workflows/ci.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/marcoslozina/invest-alerts-reactive-frontend/badge.svg?branch=main)](https://coveralls.io/github/marcoslozina/invest-alerts-reactive-frontend?branch=main)
-[![Vercel](https://vercel.com/marcoslozina/invest-alerts-reactive-frontend/deploy-status)](https://vercel.com/marcoslozina/invest-alerts-reactive-frontend)
+[![Vercel](https://vercel.com/api/badges/invest-alerts-reactive-frontend/deploy-status?style=flat)](https://vercel.com/marcoslozina/invest-alerts-reactive-frontend)
 ![Node](https://img.shields.io/badge/node-20.x-green)
 ![Test](https://img.shields.io/badge/tests-passing-brightgreen)
+
 
 ---
 
@@ -67,17 +68,7 @@ npm run storybook   # Abre Storybook en localhost:6006
 
 ## 📁 Estructura del proyecto
 
-\`\`\`
-src/
-├── components/       # Componentes reutilizables
-├── pages/            # Vistas y rutas
-├── hooks/            # Hooks personalizados
-├── i18n/             # Archivos de traducción
-├── styles/           # Tailwind + custom CSS
-├── tests/            # Tests unitarios
-├── __e2e__/          # Pruebas Cypress
-└── App.tsx           # Ruteo y Helmet
-\`\`\`
+![Estructura del proyecto](./docs/directory-structure.png)
 
 ---
 
