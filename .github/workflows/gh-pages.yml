@@ -1,0 +1,36 @@
+name: 📊 Publish Coverage to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy-coverage:
+    name: Deploy Coverage Report
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 📦 Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: 🧪 Run tests with coverage (HTML + lcov)
+        run: npm run coverage
+
+      - name: 🛡️ Generate coverage badge
+        run: npm run badge
+
+      - name: 🚀 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./coverage

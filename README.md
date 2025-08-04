@@ -7,7 +7,8 @@ Frontend profesional para el sistema **Invest Alerts**, una app de alertas de pr
 ## 📊 Badges
 
 [![CI - Frontend React App](https://github.com/marcoslozina/invest-alerts-reactive-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/marcoslozina/invest-alerts-reactive-frontend/actions)
-[![Coverage Status](https://coveralls.io/repos/github/marcoslozina/invest-alerts-reactive-frontend/badge.svg?branch=main)](https://coveralls.io/github/marcoslozina/invest-alerts-reactive-frontend?branch=main)
+[![Coverage](https://marcoslozina.github.io/invest-alerts-reactive-frontend/badge.svg)](https://marcoslozina.github.io/invest-alerts-reactive-frontend/)
+[![View Coverage Report](https://img.shields.io/badge/coverage-report-blue)](https://marcoslozina.github.io/invest-alerts-reactive-frontend/)
 [![Vercel](https://vercelbadge.vercel.app/api/marcoslozina/invest-alerts-reactive-frontend)](https://invest-alerts-reactive-frontend.vercel.app/)
 ![Node](https://img.shields.io/badge/node-20.x-brightgreen)
 ![Tests](https://img.shields.io/badge/tests-passing-brightgreen)

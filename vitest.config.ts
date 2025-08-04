@@ -8,9 +8,10 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/test/setup.ts',
     coverage: {
-      provider: 'v8',
-      reporter: ['text', 'lcov'],
-      exclude: ['node_modules/', 'src/main.tsx'],
+        provider: 'v8',
+        reporter: ['text', 'lcov', 'html', 'vitest-badge-reporter'],
+        reportsDirectory: './coverage',
+        exclude: ['node_modules/', 'src/main.tsx'],
     },
   },
 });
