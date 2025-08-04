@@ -11,6 +11,7 @@ Frontend profesional para el sistema **Invest Alerts**, una app de alertas de pr
 [![Vercel](https://vercel.com/marcoslozina/invest-alerts-reactive-frontend/deploy-status)](https://vercel.com/marcoslozina/invest-alerts-reactive-frontend)
 ![Node](https://img.shields.io/badge/node-20.x-green)
 ![Test](https://img.shields.io/badge/tests-passing-brightgreen)
+
 ---
 
 ## ✨ Features implementadas
@@ -50,7 +51,7 @@ Frontend profesional para el sistema **Invest Alerts**, una app de alertas de pr
 
 ## 🚀 Scripts disponibles
 
-```bash
+\`\`\`bash
 npm run dev         # Ejecuta la app en desarrollo
 npm run build       # Compila para producción
 npm run preview     # Sirve el build localmente
@@ -60,13 +61,13 @@ npm run test        # Corre tests con cobertura
 npm run coverage    # Genera reporte lcov
 npm run e2e         # Abre Cypress
 npm run storybook   # Abre Storybook en localhost:6006
-```
+\`\`\`
 
 ---
 
 ## 📁 Estructura del proyecto
 
-```
+\`\`\`
 src/
 ├── components/       # Componentes reutilizables
 ├── pages/            # Vistas y rutas
@@ -76,7 +77,7 @@ src/
 ├── tests/            # Tests unitarios
 ├── __e2e__/          # Pruebas Cypress
 └── App.tsx           # Ruteo y Helmet
-```
+\`\`\`
 
 ---
 
