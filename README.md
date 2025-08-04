@@ -53,7 +53,7 @@ Frontend profesional para el sistema **Invest Alerts**, una app de alertas de pr
 
 ## 🚀 Scripts disponibles
 
-\`\`\`bash
+```bash
 npm run dev         # Ejecuta la app en desarrollo
 npm run build       # Compila para producción
 npm run preview     # Sirve el build localmente
@@ -63,7 +63,7 @@ npm run test        # Corre tests con cobertura
 npm run coverage    # Genera reporte lcov
 npm run e2e         # Abre Cypress
 npm run storybook   # Abre Storybook en localhost:6006
-\`\`\`
+```
 
 ---
 
