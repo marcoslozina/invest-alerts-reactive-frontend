@@ -1,5 +1,10 @@
 {
-  "welcome": "Bienvenido",
-  "alert_threshold": "Umbral de Alerta",
-  "language": "Idioma"
+  "home": {
+    "title": "Bienvenido a Invest Alerts",
+    "description": "Monitorea y recibe alertas sobre precios de criptomonedas"
+  },
+  "realtimeCrypto": "Cripto en tiempo real",
+  "footer": {
+    "text": "Desarrollado por Marcos Lozina"
+  }
 }

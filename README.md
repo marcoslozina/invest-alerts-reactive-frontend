@@ -1,33 +1,110 @@
-# Invest Alerts Reactive Frontend
+# 🚀 Invest Alerts – React Frontend
 
-[![CI](https://github.com/marcoslozina/invest-alerts-reactive-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/marcoslozina/invest-alerts-reactive-frontend/actions)
+Frontend profesional para el sistema **Invest Alerts**, una app de alertas de precios de criptomonedas construida con React 19 + Vite. Este proyecto está pensado para ser **moderno, escalable y de clase mundial**, ideal como template base o para proyectos productivos reales.
+
+---
+
+## 📊 Badges
+
+![CI](https://github.com/marcoslozina/invest-alerts-reactive-frontend/actions/workflows/ci.yml/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/marcoslozina/invest-alerts-reactive-frontend/badge.svg?branch=main)](https://coveralls.io/github/marcoslozina/invest-alerts-reactive-frontend?branch=main)
-[![Deploy on Vercel](https://vercelbadge.vercel.app/api/marcoslozina/invest-alerts-reactive-frontend)](https://invest-alerts-reactive-frontend.vercel.app)
+[![Vercel](https://vercel.com/marcoslozina/invest-alerts-reactive-frontend/deploy-status)](https://vercel.com/marcoslozina/invest-alerts-reactive-frontend)
+![Node](https://img.shields.io/badge/node-20.x-green)
+![Test](https://img.shields.io/badge/tests-passing-brightgreen)
+---
 
-Frontend en React + Vite del sistema de alertas de criptomonedas.
+## ✨ Features implementadas
 
-
-Frontend del proyecto Invest Alerts construido con **React + TypeScript + Vite + Tailwind CSS**.
-
-Este proyecto consume datos del backend (Spring Boot WebFlux) y ofrece visualización de precios, histórico y gestión de alertas de criptoactivos.
+✅ Modularización con estructura por capas  
+✅ Tailwind CSS 4  
+✅ Internacionalización (`i18next`, `react-i18next`)  
+✅ SEO con `react-helmet-async`  
+✅ Error boundaries globales  
+✅ Lazy loading y `React.Suspense`  
+✅ E2E testing con Cypress  
+✅ Unit testing con Vitest + Testing Library  
+✅ CI/CD con GitHub Actions + Vercel  
+✅ Coverage automático con Coveralls  
+✅ Storybook configurado para componentes  
+✅ Husky + lint-staged para pre-commits  
+✅ ESLint + Prettier integrados
 
 ---
 
-## 🚀 Tecnologías
+## 🧰 Tecnologías principales
 
-- ⚛️ React 18 + TypeScript
+- ⚛️ React 19 (con TypeScript)
 - ⚡ Vite
+- 🌐 React Router 7
 - 🎨 Tailwind CSS
-- 🌐 react-i18next
-- 🧪 Vitest + React Testing Library
-- 🛡️ ESLint + Prettier
-- 🔁 Hooks + Context API
-- 📦 API modular con servicios
+- 🧪 Vitest + Testing Library
+- 🧪 Cypress (E2E)
+- 📚 Storybook 9
+- 🌍 i18next (multi idioma)
+- 🔒 Husky + lint-staged
+- 💡 react-helmet-async
+- 📦 Axios
+- ☁️ GitHub Actions + Coveralls + Vercel
 
 ---
 
-## 📦 Instalación
+## 🚀 Scripts disponibles
 
 ```bash
-npm install
-npm run dev
+npm run dev         # Ejecuta la app en desarrollo
+npm run build       # Compila para producción
+npm run preview     # Sirve el build localmente
+npm run lint        # Corre ESLint
+npm run format      # Formatea con Prettier
+npm run test        # Corre tests con cobertura
+npm run coverage    # Genera reporte lcov
+npm run e2e         # Abre Cypress
+npm run storybook   # Abre Storybook en localhost:6006
+```
+
+---
+
+## 📁 Estructura del proyecto
+
+```
+src/
+├── components/       # Componentes reutilizables
+├── pages/            # Vistas y rutas
+├── hooks/            # Hooks personalizados
+├── i18n/             # Archivos de traducción
+├── styles/           # Tailwind + custom CSS
+├── tests/            # Tests unitarios
+├── __e2e__/          # Pruebas Cypress
+└── App.tsx           # Ruteo y Helmet
+```
+
+---
+
+## 🌍 i18n (idiomas)
+
+El proyecto está preparado para internacionalización. Idiomas disponibles:
+
+- 🇺🇸 Inglés (`en`)
+- 🇪🇸 Español (`es`)
+
+Podés agregar nuevos idiomas editando `src/locales/`.
+
+---
+
+## 🧪 Tests y cobertura
+
+- Tests unitarios se ejecutan con `Vitest`
+- E2E tests con `Cypress`
+- Cobertura publicada automáticamente en [Coveralls](https://coveralls.io/github/marcoslozina/invest-alerts-reactive-frontend)
+
+---
+
+## 📦 Deploy automático
+
+El proyecto se despliega automáticamente en [Vercel](https://vercel.com/dashboard), al hacer push a `main`.
+
+---
+
+## 📄 Licencia
+
+MIT © [Marcos Lozina](https://github.com/marcoslozina)

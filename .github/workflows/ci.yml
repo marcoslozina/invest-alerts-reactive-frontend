@@ -8,7 +8,7 @@ on:
 
 jobs:
   install-and-build:
-    name: Lint, Build & Test
+    name: Lint, Build & Coverage
     runs-on: ubuntu-latest
 
     steps:
@@ -29,8 +29,8 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Run tests with coverage
-        run: npm run test
+      - name: Run coverage
+        run: npm run coverage
 
       - name: Upload coverage to Coveralls
         uses: coverallsapp/github-action@v2

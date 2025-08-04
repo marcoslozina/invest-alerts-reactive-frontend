@@ -1,5 +1,10 @@
 {
-  "welcome": "Welcome",
-  "alert_threshold": "Alert Threshold",
-  "language": "Language"
+  "home": {
+    "title": "Welcome to Invest Alerts",
+    "description": "Monitor and get notified about crypto prices"
+  },
+  "realtimeCrypto": "Real-time crypto",
+  "footer": {
+    "text": "Developed by Marcos Lozina"
+  }
 }
