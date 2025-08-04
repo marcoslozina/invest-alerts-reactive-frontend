@@ -11,6 +11,15 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'lcov'],
       reportsDirectory: './coverage',
+      exclude: [
+        '**/main.tsx',
+        '**/i18n.ts',
+        '**/vite-env.d.ts',
+        '**/*.d.ts',
+        '**/types.ts',
+        '**/index.ts',       // Barrel exports
+        '**/*.test.tsx',     // (opcional) Excluir tests de la cobertura
+      ],
     },
   },
 });
