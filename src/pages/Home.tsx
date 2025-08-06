@@ -1,7 +1,7 @@
 // src/pages/Home.tsx
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import PriceViewer from '../components/PriceViewer';
+import { PriceViewer } from '../components/PriceViewer';
 
 const Home: React.FC = () => {
   const { t } = useTranslation();
