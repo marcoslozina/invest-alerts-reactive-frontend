@@ -1,4 +1,18 @@
-# Logs
+# 🧪 Dependencias y builds
+node_modules/
+dist/
+dist-ssr/
+build/
+coverage/
+storybook-static/
+
+# ⚙️ Archivos de entorno
+.env
+.env.*
+!.env.example
+*.local
+
+# 🪵 Logs
 logs
 *.log
 npm-debug.log*
@@ -7,18 +21,19 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
+# 🖥️ Configuración de editores y SO
 .vscode/*
 !.vscode/extensions.json
-.idea
+.idea/
 .DS_Store
+Thumbs.db
+
+# 🗂️ Archivos temporales o de debugging
+*.tmp
+*.sw?
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
+*.tgz
+*.zip
