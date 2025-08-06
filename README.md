@@ -6,11 +6,12 @@ Frontend profesional para el sistema **Invest Alerts**, una app de alertas de pr
 
 ## 📊 Badges
 
-[![CI - Frontend React App](https://github.com/marcoslozina/invest-alerts-reactive-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/marcoslozina/invest-alerts-reactive-frontend/actions)  
-[![codecov](https://codecov.io/gh/marcoslozina/invest-alerts-reactive-frontend/branch/main/graph/badge.svg)](https://codecov.io/gh/marcoslozina/invest-alerts-reactive-frontend)  
-[![Vercel](https://vercelbadge.vercel.app/api/marcoslozina/invest-alerts-reactive-frontend)](https://invest-alerts-reactive-frontend.vercel.app/)  
-![Node](https://img.shields.io/badge/node-20.x-brightgreen)  
+[![CI - Frontend React App](https://github.com/marcoslozina/invest-alerts-reactive-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/marcoslozina/invest-alerts-reactive-frontend/actions)
+[![codecov](https://codecov.io/gh/marcoslozina/invest-alerts-reactive-frontend/branch/main/graph/badge.svg)](https://codecov.io/gh/marcoslozina/invest-alerts-reactive-frontend)
+[![Vercel](https://vercelbadge.vercel.app/api/marcoslozina/invest-alerts-reactive-frontend)](https://invest-alerts-reactive-frontend.vercel.app/)
+![Node](https://img.shields.io/badge/node-20.x-brightgreen)
 ![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
+
 
 ---
 

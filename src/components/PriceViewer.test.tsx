@@ -5,8 +5,10 @@ import i18n from '../test/i18nForTests';
 import { PriceViewer } from './PriceViewer';
 
 // Mock dinámico del hook
+import * as useAssetPriceModule from '../hooks/useAssetPrice';
 jest.mock('../hooks/useAssetPrice');
-const mockedUseAssetPrice = require('../hooks/useAssetPrice').useAssetPrice;
+
+const mockedUseAssetPrice = useAssetPriceModule.useAssetPrice as jest.Mock;
 
 describe('PriceViewer', () => {
   it('renders loading state', () => {
