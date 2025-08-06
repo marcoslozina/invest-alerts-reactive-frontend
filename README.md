@@ -6,13 +6,11 @@ Frontend profesional para el sistema **Invest Alerts**, una app de alertas de pr
 
 ## 📊 Badges
 
-[![CI - Frontend React App](https://github.com/marcoslozina/invest-alerts-reactive-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/marcoslozina/invest-alerts-reactive-frontend/actions)
-[![codecov](https://codecov.io/gh/marcoslozina/invest-alerts-reactive-frontend/branch/main/graph/badge.svg)](https://codecov.io/gh/marcoslozina/invest-alerts-reactive-frontend)
-[![Vercel](https://vercelbadge.vercel.app/api/marcoslozina/invest-alerts-reactive-frontend)](https://invest-alerts-reactive-frontend.vercel.app/)
-![Node](https://img.shields.io/badge/node-20.x-brightgreen)
+[![CI - Frontend React App](https://github.com/marcoslozina/invest-alerts-reactive-frontend/actions/workflows/ci.yml/badge.svg)](https://github.com/marcoslozina/invest-alerts-reactive-frontend/actions)  
+[![codecov](https://codecov.io/gh/marcoslozina/invest-alerts-reactive-frontend/branch/main/graph/badge.svg)](https://codecov.io/gh/marcoslozina/invest-alerts-reactive-frontend)  
+[![Vercel](https://vercelbadge.vercel.app/api/marcoslozina/invest-alerts-reactive-frontend)](https://invest-alerts-reactive-frontend.vercel.app/)  
+![Node](https://img.shields.io/badge/node-20.x-brightgreen)  
 ![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
-
-
 
 ---
 
@@ -25,12 +23,14 @@ Frontend profesional para el sistema **Invest Alerts**, una app de alertas de pr
 ✅ Error boundaries globales  
 ✅ Lazy loading y `React.Suspense`  
 ✅ E2E testing con Cypress  
-✅ Unit testing con Vitest + Testing Library  
+✅ Unit testing con **Jest** + Testing Library  
+✅ Mock Server de backend para tests  
 ✅ CI/CD con GitHub Actions + Vercel  
-✅ Coverage automático con Coveralls  
-✅ Storybook configurado para componentes  
+✅ Coverage automático con **Codecov**  
+✅ Storybook 9 para UI components  
 ✅ Husky + lint-staged para pre-commits  
-✅ ESLint + Prettier integrados
+✅ ESLint + Prettier integrados  
+✅ Compatibilidad con React 19
 
 ---
 
@@ -40,14 +40,14 @@ Frontend profesional para el sistema **Invest Alerts**, una app de alertas de pr
 - ⚡ Vite
 - 🌐 React Router 7
 - 🎨 Tailwind CSS
-- 🧪 Vitest + Testing Library
+- 🧪 Jest + React Testing Library
 - 🧪 Cypress (E2E)
 - 📚 Storybook 9
 - 🌍 i18next (multi idioma)
 - 🔒 Husky + lint-staged
 - 💡 react-helmet-async
 - 📦 Axios
-- ☁️ GitHub Actions + Coveralls + Vercel
+- ☁️ GitHub Actions + Codecov + Vercel
 
 ---
 
@@ -59,8 +59,8 @@ npm run build       # Compila para producción
 npm run preview     # Sirve el build localmente
 npm run lint        # Corre ESLint
 npm run format      # Formatea con Prettier
-npm run test        # Corre tests con cobertura
-npm run coverage    # Genera reporte lcov
+npm run test        # Corre tests unitarios con Jest
+npm run coverage    # Genera reporte de cobertura
 npm run e2e         # Abre Cypress
 npm run storybook   # Abre Storybook en localhost:6006
 ```
@@ -80,21 +80,22 @@ El proyecto está preparado para internacionalización. Idiomas disponibles:
 - 🇺🇸 Inglés (`en`)
 - 🇪🇸 Español (`es`)
 
-Podés agregar nuevos idiomas editando `src/locales/`.
+Podés agregar nuevos idiomas editando la carpeta `src/locales/`.
 
 ---
 
 ## 🧪 Tests y cobertura
 
-- Tests unitarios se ejecutan con `Vitest`
-- E2E tests con `Cypress`
-- Cobertura publicada automáticamente en [Coveralls](https://coveralls.io/github/marcoslozina/invest-alerts-reactive-frontend)
+- Tests unitarios con **Jest**
+- Mock del backend usando `__mocks__` y `jest.mock(...)`
+- E2E tests con **Cypress**
+- Cobertura publicada automáticamente en [Codecov](https://codecov.io/gh/marcoslozina/invest-alerts-reactive-frontend)
 
 ---
 
 ## 📦 Deploy automático
 
-El proyecto se despliega automáticamente en [Vercel](https://vercel.com/dashboard), al hacer push a `main`.
+El proyecto se despliega automáticamente en [Vercel](https://vercel.com/dashboard), al hacer push a la rama `main`.
 
 ---
 
