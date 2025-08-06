@@ -1,10 +1,37 @@
 {
   "home": {
     "title": "Bienvenido a Invest Alerts",
-    "description": "Monitorea y recibe alertas sobre precios de criptomonedas"
+    "description": "Monitorea y recibe alertas sobre precios de criptomonedas",
+    "dashboard": "Dashboard financiero"
+  },
+  "price": {
+    "title": "Precio actual de {{symbol}}",
+    "updated": "Actualizado: {{timestamp}}",
+    "loading": "Cargando precio de {{symbol}}...",
+    "noData": "No hay datos disponibles.",
+    "error": "Error al cargar el precio"
   },
   "realtimeCrypto": "Cripto en tiempo real",
   "footer": {
     "text": "Desarrollado por Marcos Lozina"
+  },
+  "form": {
+    "title": "Registrar alerta de precio",
+    "fields": {
+      "symbol": "Símbolo (ej: BTC)",
+      "threshold": "Umbral",
+      "type": "Condición"
+    },
+    "options": {
+      "greater": "Mayor que",
+      "less": "Menor que"
+    },
+    "submit": "Registrar alerta",
+    "success": "¡Alerta registrada con éxito!",
+    "error": "Error al registrar la alerta.",
+    "errors": {
+      "required": "Este campo es obligatorio",
+      "number": "Debe ser un número válido"
+    }
   }
 }

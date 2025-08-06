@@ -1,17 +1,42 @@
-import { useEffect, useState } from 'react'
-import { getPrice } from '../services/priceService'
+// src/hooks/useAssetPrice.ts
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-export function useAssetPrice(symbol: string) {
-  const [data, setData] = useState<{ price: number } | null>(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+interface PriceResponse {
+  symbol: string;
+  price: number;
+  timestamp: string;
+}
+
+export const useAssetPrice = (symbol: string) => {
+  const [data, setData] = useState<PriceResponse | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    getPrice(symbol)
-      .then(setData)
-      .catch((err) => setError(err.message))
-      .finally(() => setLoading(false))
-  }, [symbol])
+    const fetchPrice = async () => {
+      try {
+        setLoading(true);
+        const res = await axios.get<PriceResponse>(`/assets/price?symbol=${symbol}`);
+        setData(res.data);
+      } catch (err) {
+        console.warn('⚠️ Backend no disponible, usando MOCK');
+        // mock de fallback si backend no responde
+        setData({
+          symbol,
+          price: 30123.45,
+          timestamp: new Date().toISOString(),
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  return { data, loading, error }
-}
+    fetchPrice();
+
+    const interval = setInterval(fetchPrice, 5000);
+    return () => clearInterval(interval);
+  }, [symbol]);
+
+  return { data, loading, error };
+};

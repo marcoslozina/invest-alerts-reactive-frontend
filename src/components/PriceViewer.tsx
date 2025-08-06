@@ -1,19 +1,35 @@
-import React from 'react'
-import { useAssetPrice } from '../hooks/useAssetPrice'
+// src/components/PriceViewer.tsx
+import React from 'react';
+import { useAssetPrice } from '../hooks/useAssetPrice';
+import { useTranslation } from 'react-i18next';
 
-export default function PriceViewer() {
-  const { data, loading, error } = useAssetPrice('BTC')
+interface Props {
+  symbol: string;
+}
 
-  console.log('Estado:', { data, loading, error })
+const PriceViewer: React.FC<Props> = ({ symbol }) => {
+  const { data, loading, error } = useAssetPrice(symbol);
+  const { t } = useTranslation(); // ✅ hook de i18n
 
-  if (loading) return <p className="text-yellow-500">Cargando...</p>
-  if (error) return <p className="text-red-500">Error: {error}</p>
-  if (!data) return <p className="text-gray-500">Sin datos</p>
+  if (loading) return <p>{t('price.loading', { symbol })}</p>;
+  if (error) return <p>{t('price.error')}</p>;
+  if (!data) return <p>{t('price.noData')}</p>;
 
   return (
-    <div className="border rounded p-4 bg-gray-100 dark:bg-gray-800">
-      <h2 className="text-lg font-semibold mb-2">BTC</h2>
-      <p className="text-xl">Precio: ${data.price}</p>
+    <div className="border p-4 rounded shadow">
+      <h2 className="text-xl font-bold">
+        {t('price.title', { symbol: data.symbol })}
+      </h2>
+      <p className="text-green-600 text-3xl">
+        ${data.price.toFixed(2)}
+      </p>
+      <p className="text-sm text-gray-500">
+        {t('price.updated', {
+          timestamp: new Date(data.timestamp).toLocaleString()
+        })}
+      </p>
     </div>
-  )
-}
+  );
+};
+
+export default PriceViewer;

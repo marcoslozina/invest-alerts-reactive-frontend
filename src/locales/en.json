@@ -1,10 +1,37 @@
 {
   "home": {
     "title": "Welcome to Invest Alerts",
-    "description": "Monitor and get notified about crypto prices"
+    "description": "Monitor and receive alerts about crypto prices",
+    "dashboard": "Financial Dashboard"
+  },
+  "price": {
+    "title": "Current price of {{symbol}}",
+    "updated": "Last updated: {{timestamp}}",
+    "loading": "Loading price of {{symbol}}...",
+    "noData": "No data available.",
+    "error": "Failed to load price"
   },
   "realtimeCrypto": "Real-time crypto",
   "footer": {
     "text": "Developed by Marcos Lozina"
+  },
+  "form": {
+    "title": "Register price alert",
+    "fields": {
+      "symbol": "Symbol (e.g. BTC)",
+      "threshold": "Threshold",
+      "type": "Condition"
+    },
+    "options": {
+      "greater": "Greater than",
+      "less": "Less than"
+    },
+    "submit": "Register alert",
+    "success": "Alert registered successfully!",
+    "error": "Failed to register alert.",
+    "errors": {
+      "required": "This field is required",
+      "number": "Must be a valid number"
+    }
   }
 }

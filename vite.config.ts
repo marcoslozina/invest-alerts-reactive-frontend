@@ -4,6 +4,15 @@ import { configDefaults } from 'vitest/config';
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    proxy: {
+      '/assets': {
+        target: 'http://localhost:8080',
+        changeOrigin: true,
+        secure: false,
+      },
+    },
+  },
   test: {
     globals: true,
     environment: 'jsdom',

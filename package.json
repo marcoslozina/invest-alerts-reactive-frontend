@@ -47,6 +47,7 @@
     "i18next-browser-languagedetector": "^8.2.0",
     "jsdom": "^26.1.0",
     "lint-staged": "^16.1.2",
+    "msw": "^1.3.5",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
     "tailwindcss": "^4.1.11",
@@ -60,5 +61,8 @@
       "eslint --fix",
       "prettier --write"
     ]
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

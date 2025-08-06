@@ -1,16 +1,14 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
-import { AppRoutes } from './router/AppRoutes';
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import TestPostMock from './pages/TestPostMock';
 
 const App = () => {
   return (
-    <>
-      <Helmet>
-        <title>Invest Alerts</title>
-        <meta name="description" content="Sistema de alertas de precios de criptomonedas" />
-      </Helmet>
-      <AppRoutes />
-    </>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/test-post" element={<TestPostMock />} />
+    </Routes>
   );
 };
 
