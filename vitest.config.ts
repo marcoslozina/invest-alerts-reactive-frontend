@@ -18,6 +18,8 @@ export default defineConfig({
         '**/*.config.{js,ts,cjs,mjs}',
         '**/*.cy.{js,ts,jsx,tsx}',
         '**/cypress/**',
+        '**/public/**',
+        '**/mockServiceWorker.js',
         '**/src/main.tsx',
         '**/src/App.tsx',
         '**/src/i18n.ts',
@@ -26,10 +28,14 @@ export default defineConfig({
         '**/src/pages/**',
         '**/src/services/api.ts',
         '**/src/services/priceService.ts',
+        '**/src/services/alertService.ts',      // agregado
         '**/src/components/TranslatedText.tsx',
         '**/src/components/LanguageSwitcher.tsx',
         '**/src/components/PriceViewer.tsx',
-        '**/src/utils/index.ts',
+        '**/src/components/PriceHistoryChart.tsx', // agregado si no se usa aún
+        '**/src/mocks/**',
+        '**/src/test/**',
+        '**/src/hooks/useAssetHistory.ts', // agregado si no se está usando
       ],
     },
   },
