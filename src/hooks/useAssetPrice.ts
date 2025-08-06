@@ -1,6 +1,6 @@
 // src/hooks/useAssetPrice.ts
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 interface PriceResponse {
   symbol: string;
@@ -17,11 +17,17 @@ export const useAssetPrice = (symbol: string) => {
     const fetchPrice = async () => {
       try {
         setLoading(true);
+        setError(null);
+
         const res = await axios.get<PriceResponse>(`/assets/price?symbol=${symbol}`);
         setData(res.data);
       } catch (err) {
+        const axiosError = err as AxiosError;
         console.warn('⚠️ Backend no disponible, usando MOCK');
-        // mock de fallback si backend no responde
+
+        setError(axiosError.message || 'Error desconocido al obtener el precio');
+
+        // fallback mock
         setData({
           symbol,
           price: 30123.45,
@@ -33,7 +39,6 @@ export const useAssetPrice = (symbol: string) => {
     };
 
     fetchPrice();
-
     const interval = setInterval(fetchPrice, 5000);
     return () => clearInterval(interval);
   }, [symbol]);

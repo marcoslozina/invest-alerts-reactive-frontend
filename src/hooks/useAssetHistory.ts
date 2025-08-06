@@ -1,5 +1,6 @@
+// src/hooks/useAssetHistory.ts
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 
 interface HistoryEntry {
   price: number;
@@ -15,10 +16,16 @@ export const useAssetHistory = (symbol: string) => {
     const fetchHistory = async () => {
       try {
         setLoading(true);
+        setError(null); // Limpia error previo si hubo
+
         const res = await axios.get<HistoryEntry[]>(`/assets/history?symbol=${symbol}`);
         setData(res.data.slice(-10)); // últimos 10 precios
       } catch (err) {
+        const axiosError = err as AxiosError;
         console.warn('⚠️ Backend no disponible, usando MOCK');
+
+        setError(axiosError.message || 'Error desconocido al obtener el historial');
+
         setData([
           { price: 30000, timestamp: '2025-08-04T20:30:00Z' },
           { price: 30100, timestamp: '2025-08-04T20:35:00Z' },
