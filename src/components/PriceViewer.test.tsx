@@ -1,12 +1,27 @@
+// src/components/PriceViewer.test.tsx
+import React from 'react';
 import { render, screen } from '@testing-library/react';
-import PriceViewer from './PriceViewer';
-import { describe, it, expect } from 'vitest';
-import '../test/i18nForTests'; // ✅ CORRECTO si tu estructura es src/components y src/test
+import { I18nextProvider } from 'react-i18next';
+import i18n from '../test/i18nForTests';
+import { PriceViewer } from './PriceViewer'; // ✅ Named import
+
+jest.mock('../hooks/useAssetPrice', () => ({
+  useAssetPrice: () => ({
+    data: null,
+    loading: true,
+    error: null,
+  }),
+}));
 
 describe('PriceViewer', () => {
-  it('renders without crashing', () => {
-    render(<PriceViewer />);
-    const status = screen.getByText('Cargando...');
-    expect(status).toBeInTheDocument();
+  it('renders loading state', () => {
+    render(
+      <I18nextProvider i18n={i18n}>
+        <PriceViewer symbol="BTC" />
+      </I18nextProvider>
+    );
+    // Buscamos el string traducido exacto
+    const loadingText = screen.getByText('Cargando precio de BTC...');
+    expect(loadingText).toBeInTheDocument();
   });
 });

@@ -1,4 +1,3 @@
-// src/components/PriceViewer.tsx
 import React from 'react';
 import { useAssetPrice } from '../hooks/useAssetPrice';
 import { useTranslation } from 'react-i18next';
@@ -7,7 +6,7 @@ interface Props {
   symbol: string;
 }
 
-const PriceViewer: React.FC<Props> = ({ symbol }) => {
+export const PriceViewer: React.FC<Props> = ({ symbol }) => {
   const { data, loading, error } = useAssetPrice(symbol);
   const { t } = useTranslation(); // ✅ hook de i18n
 
@@ -21,7 +20,7 @@ const PriceViewer: React.FC<Props> = ({ symbol }) => {
         {t('price.title', { symbol: data.symbol })}
       </h2>
       <p className="text-green-600 text-3xl">
-        ${data.price.toFixed(2)}
+        {typeof data.price === 'number' ? `$${data.price.toFixed(2)}` : t('price.noData')}
       </p>
       <p className="text-sm text-gray-500">
         {t('price.updated', {
@@ -31,5 +30,3 @@ const PriceViewer: React.FC<Props> = ({ symbol }) => {
     </div>
   );
 };
-
-export default PriceViewer;

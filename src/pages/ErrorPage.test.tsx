@@ -1,6 +1,7 @@
+import React from 'react';
 import { render } from '@testing-library/react';
 import ErrorPage from './ErrorPage';
-import { describe, it, expect } from 'vitest';
+import { describe, expect, it } from '@jest/globals';
 
 describe('ErrorPage', () => {
   it('renders error message', () => {

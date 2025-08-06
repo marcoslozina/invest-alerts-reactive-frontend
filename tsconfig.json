@@ -15,7 +15,10 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "types": ["vitest"]
+    "types": ["vitest"],
+    "baseUrl": "src",
+    "paths": {
+    }
   },
   "include": ["src"],
   "exclude": ["dist", "**/*.test.ts", "**/*.test.tsx"]
