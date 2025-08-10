@@ -1,35 +1,23 @@
-import React from 'react';
-import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-} from 'recharts';
+// src/components/PriceHistoryChart.tsx
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import { useAssetHistory } from '../hooks/useAssetHistory';
-import { useTranslation } from 'react-i18next';
 
-interface Props {
-  symbol: string;
-}
+export const PriceHistoryChart = ({ symbol }: { symbol: string }) => {
+  const { data, loading, error } = useAssetHistory(symbol);
 
-const PriceHistoryChart: React.FC<Props> = ({ symbol }) => {
-  const { data, loading } = useAssetHistory(symbol);
-  const { t } = useTranslation();
+  if (loading) return <p>Cargando...</p>;
+  if (error) return <p>Error: {error}</p>;
+  if (!Array.isArray(data)) return <p className="text-red-500">⚠️ Los datos no son válidos.</p>;
 
-  if (loading) return <p>{t('price.loading', { symbol })}</p>;
-  if (data.length === 0) return <p>{t('price.noData')}</p>;
 
   return (
-    <div className="w-full h-64 border rounded p-4 shadow">
-      <h2 className="text-lg font-semibold mb-2">{t('realtimeCrypto')}</h2>
-      <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={data}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="timestamp" tickFormatter={(t) => new Date(t).toLocaleTimeString()} />
-          <YAxis />
-          <Tooltip labelFormatter={(label) => new Date(label).toLocaleString()} />
-          <Line type="monotone" dataKey="price" stroke="#8884d8" />
-        </LineChart>
-      </ResponsiveContainer>
-    </div>
+    <ResponsiveContainer width="100%" height={300}>
+      <LineChart data={data}>
+        <XAxis dataKey="timestamp" />
+        <YAxis dataKey="price" />
+        <Tooltip />
+        <Line type="monotone" dataKey="price" stroke="#3b82f6" strokeWidth={2} />
+      </LineChart>
+    </ResponsiveContainer>
   );
 };
-
-export default PriceHistoryChart;

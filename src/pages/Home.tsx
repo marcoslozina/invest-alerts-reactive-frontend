@@ -1,16 +1,25 @@
-// src/pages/Home.tsx
-import React from 'react';
-import { useTranslation } from 'react-i18next';
-import { PriceViewer } from '../components/PriceViewer';
+import { useState } from 'react';
+import { PriceHistoryChart } from '../components/PriceHistoryChart';
 
-const Home: React.FC = () => {
-  const { t } = useTranslation();
+const Home = () => {
+  const [symbol, setSymbol] = useState('BTC');
 
   return (
-    <main className="p-6">
-      <h1 className="text-2xl font-semibold mb-4">{t('home.dashboard')}</h1>
-      <PriceViewer symbol="BTC" />
-    </main>
+    <div className="p-4">
+      <h1 className="text-xl font-bold mb-4">Historial de precios</h1>
+
+      <select
+        className="mb-4 border p-2"
+        value={symbol}
+        onChange={(e) => setSymbol(e.target.value)}
+      >
+        <option value="BTC">BTC</option>
+        <option value="ETH">ETH</option>
+        <option value="SOL">SOL</option>
+      </select>
+
+      <PriceHistoryChart symbol={symbol} />
+    </div>
   );
 };
 
