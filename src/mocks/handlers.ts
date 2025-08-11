@@ -11,8 +11,8 @@ type AlertDTO = {
 
 type HistoryEntry = { price: number; timestamp: string };
 
-// 🧠 "DB" en memoria (dura mientras corre el dev server / SW activo)
-const alertsDb: AlertDTO[] = [];
+// 🧠 "DB" en memoria (dura mientras corre el dev server / SW activo)  // 🆕 STEP 4
+const alertsDb: AlertDTO[] = []; // 🆕 STEP 4
 
 // --------- STEP 3: history ----------
 function buildHistory(symbol: string): HistoryEntry[] {
@@ -27,7 +27,7 @@ function buildHistory(symbol: string): HistoryEntry[] {
 
 // --------- STEP 4: alerts (mock con “persistencia”) ----------
 export const handlers = [
-  // Crear alerta (ahora guarda y devuelve el objeto creado)
+  // 🆕 STEP 4 - Crear alerta con persistencia
   rest.post('/alerts', async (req, res, ctx) => {
     const body = await req.json() as Omit<AlertDTO, 'id' | 'createdAt'>;
 
@@ -43,11 +43,11 @@ export const handlers = [
     return res(ctx.status(201), ctx.json(newAlert));
   }),
 
-  // Listar alertas
-  rest.get('/alerts', (_req, res, ctx) => {
-    const data = [...alertsDb].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
-    return res(ctx.status(200), ctx.json(data));
-  }),
+  // 🆕 STEP 4 - Listar alertas desde memoria
+ rest.get('/alerts', (_req, res, ctx) => {
+  const data = [...alertsDb].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+  return res(ctx.status(200), ctx.json(data)); // <- array, no objeto
+}),
 
   // STEP 3: historial de precios
   rest.get('/assets/history', (req, res, ctx) => {

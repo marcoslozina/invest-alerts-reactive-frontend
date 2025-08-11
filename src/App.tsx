@@ -12,6 +12,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="alerts" element={<Alerts />} />
           <Route path="test-post" element={<TestPostMock />} />
           <Route path="alerts" element={<Alerts />} />  {/* 👈 nuevo */}
 
