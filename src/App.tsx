@@ -4,7 +4,8 @@ import Home from './pages/Home';
 import TestPostMock from './pages/TestPostMock';
 import { Layout } from './layouts/AppLayout';
 import { Toaster } from 'react-hot-toast';
-import Alerts from './pages/Alerts';     
+import Alerts from './pages/Alerts'; 
+import LiveAlerts from './pages/LiveAlerts'; // opcional    
 const App = () => {
   return (
     <>
@@ -15,7 +16,7 @@ const App = () => {
           <Route path="alerts" element={<Alerts />} />
           <Route path="test-post" element={<TestPostMock />} />
           <Route path="alerts" element={<Alerts />} />  {/* 👈 nuevo */}
-
+          <Route path="live-alerts" element={<LiveAlerts />} /> {/* 🆕 opcional */}
         </Route>
       </Routes>
     </>
