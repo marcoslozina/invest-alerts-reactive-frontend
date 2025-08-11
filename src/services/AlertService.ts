@@ -58,3 +58,15 @@ export async function getAlerts(): Promise<AlertDTO[]> {
   console.warn('GET /alerts devolvió un formato inesperado:', data);
   return [];
 }
+
+export async function updateAlert(
+  id: string,
+  patch: Partial<Pick<AlertPayload, 'threshold' | 'type'>>
+) {
+  const { data } = await axios.put<AlertDTO>(`/alerts/${id}`, patch);
+  return data;
+}
+
+export async function deleteAlert(id: string) {
+  await axios.delete(`/alerts/${id}`);
+}

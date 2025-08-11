@@ -1,4 +1,3 @@
-// src/mocks/handlers.ts
 import { rest } from 'msw';
 
 type AlertDTO = {
@@ -11,10 +10,10 @@ type AlertDTO = {
 
 type HistoryEntry = { price: number; timestamp: string };
 
-// 🧠 "DB" en memoria (dura mientras corre el dev server / SW activo)  // 🆕 STEP 4
-const alertsDb: AlertDTO[] = []; // 🆕 STEP 4
+// 🆕 STEP 4: “DB” en memoria
+const alertsDb: AlertDTO[] = [];
 
-// --------- STEP 3: history ----------
+// (STEP 3) Generador de historial
 function buildHistory(symbol: string): HistoryEntry[] {
   const basePrices: Record<string, number> = { BTC: 30000, ETH: 2000, SOL: 150 };
   const base = basePrices[symbol] ?? 100;
@@ -25,34 +24,57 @@ function buildHistory(symbol: string): HistoryEntry[] {
   }));
 }
 
-// --------- STEP 4: alerts (mock con “persistencia”) ----------
 export const handlers = [
-  // 🆕 STEP 4 - Crear alerta con persistencia
+  // 🆕 STEP 4: Crear alerta (persistencia en memoria)
   rest.post('/alerts', async (req, res, ctx) => {
-    const body = await req.json() as Omit<AlertDTO, 'id' | 'createdAt'>;
-
+    const body = (await req.json()) as Omit<AlertDTO, 'id' | 'createdAt'>;
     const newAlert: AlertDTO = {
       id: globalThis.crypto?.randomUUID?.() ?? String(Date.now()),
       createdAt: new Date().toISOString(),
-      ...body,
+      symbol: body.symbol,
+      threshold: Number(body.threshold),
+      type: body.type,
     };
-
     alertsDb.push(newAlert);
-    console.log('🧪 Mock POST /alerts → guardada:', newAlert);
-
     return res(ctx.status(201), ctx.json(newAlert));
   }),
 
-  // 🆕 STEP 4 - Listar alertas desde memoria
- rest.get('/alerts', (_req, res, ctx) => {
-  const data = [...alertsDb].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
-  return res(ctx.status(200), ctx.json(data)); // <- array, no objeto
-}),
+  // 🆕 STEP 4: Listar alertas
+  rest.get('/alerts', (_req, res, ctx) => {
+    const data = [...alertsDb].sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+    return res(ctx.status(200), ctx.json(data)); // array
+  }),
 
-  // STEP 3: historial de precios
+  // 🆕 STEP 6: Actualizar alerta (threshold/type)
+  rest.put('/alerts/:id', async (req, res, ctx) => {
+    const { id } = req.params as { id: string };
+    const body = (await req.json()) as Partial<AlertDTO>;
+    const idx = alertsDb.findIndex(a => a.id === id);
+    if (idx === -1) return res(ctx.status(404), ctx.json({ message: 'Not found' }));
+
+    const patch: Partial<AlertDTO> = {};
+    if (typeof body.threshold === 'number' && Number.isFinite(body.threshold) && body.threshold > 0) {
+      patch.threshold = body.threshold;
+    }
+    if (body.type === 'ABOVE' || body.type === 'BELOW') {
+      patch.type = body.type;
+    }
+    alertsDb[idx] = { ...alertsDb[idx], ...patch };
+    return res(ctx.status(200), ctx.json(alertsDb[idx]));
+  }),
+
+  // 🆕 STEP 6: Eliminar alerta
+  rest.delete('/alerts/:id', (req, res, ctx) => {
+    const { id } = req.params as { id: string };
+    const idx = alertsDb.findIndex(a => a.id === id);
+    if (idx === -1) return res(ctx.status(404), ctx.json({ message: 'Not found' }));
+    alertsDb.splice(idx, 1);
+    return res(ctx.status(204));
+  }),
+
+  // (STEP 3) Historial de precios
   rest.get('/assets/history', (req, res, ctx) => {
     const symbol = req.url.searchParams.get('symbol') || 'BTC';
-    console.log(`🧪 Mock GET /assets/history?symbol=${symbol}`);
     const data = buildHistory(symbol);
     return res(ctx.status(200), ctx.json(data));
   }),
