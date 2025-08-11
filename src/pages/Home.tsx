@@ -5,20 +5,27 @@ const Home = () => {
   const [symbol, setSymbol] = useState('BTC');
 
   return (
-    <div className="p-4">
-      <h1 className="text-xl font-bold mb-4">Historial de precios</h1>
+    <div className="p-6 space-y-4">
+      <h1 className="text-2xl font-bold">Historial de precios</h1>
 
-      <select
-        className="mb-4 border p-2"
-        value={symbol}
-        onChange={(e) => setSymbol(e.target.value)}
-      >
-        <option value="BTC">BTC</option>
-        <option value="ETH">ETH</option>
-        <option value="SOL">SOL</option>
-      </select>
+      <div className="card">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <label className="text-sm font-medium">Símbolo</label>
+          <select
+            className="input sm:max-w-xs"
+            value={symbol}
+            onChange={(e) => setSymbol(e.target.value)}
+          >
+            <option value="BTC">BTC</option>
+            <option value="ETH">ETH</option>
+            <option value="SOL">SOL</option>
+          </select>
+        </div>
 
-      <PriceHistoryChart symbol={symbol} />
+        <div className="mt-5">
+          <PriceHistoryChart symbol={symbol} />
+        </div>
+      </div>
     </div>
   );
 };

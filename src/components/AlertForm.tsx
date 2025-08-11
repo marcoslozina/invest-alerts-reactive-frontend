@@ -11,10 +11,9 @@ const schema = Yup.object({
 
 const initialValues: AlertPayload = { symbol: 'BTC', threshold: 50000, type: 'ABOVE' };
 
-// 🆕 STEP 4: onCreated para refrescar el listado
 export const AlertForm = ({ onCreated }: { onCreated?: () => void }) => {
   return (
-    <div className="max-w-md w-full bg-white shadow p-4 rounded-2xl border">
+    <div className="max-w-md w-full card">
       <h2 className="text-xl font-semibold mb-4">Registrar alerta de precio</h2>
 
       <Formik
@@ -24,7 +23,7 @@ export const AlertForm = ({ onCreated }: { onCreated?: () => void }) => {
           try {
             await createAlert(values);
             toast.success('✅ Alerta registrada');
-            onCreated?.(); // 🆕 STEP 4
+            onCreated?.();
             resetForm({ values });
           } catch {
             toast.error('❌ No se pudo registrar la alerta');
@@ -37,30 +36,34 @@ export const AlertForm = ({ onCreated }: { onCreated?: () => void }) => {
           <Form className="space-y-4">
             <div>
               <label className="block text-sm font-medium mb-1">Símbolo</label>
-              <Field as="select" name="symbol" className="w-full border rounded p-2">
+              <Field as="select" name="symbol" className="input">
                 <option value="BTC">BTC</option>
                 <option value="ETH">ETH</option>
                 <option value="SOL">SOL</option>
               </Field>
-              <ErrorMessage name="symbol" component="div" className="text-red-600 text-sm" />
+              <ErrorMessage name="symbol" component="div" className="text-red-600 text-sm mt-1" />
             </div>
 
             <div>
               <label className="block text-sm font-medium mb-1">Umbral</label>
-              <Field name="threshold" type="number" className="w-full border rounded p-2" />
-              <ErrorMessage name="threshold" component="div" className="text-red-600 text-sm" />
+              <Field name="threshold" type="number" className="input" />
+              <ErrorMessage name="threshold" component="div" className="text-red-600 text-sm mt-1" />
             </div>
 
             <div>
               <label className="block text-sm font-medium mb-1">Condición</label>
-              <Field as="select" name="type" className="w-full border rounded p-2">
+              <Field as="select" name="type" className="input">
                 <option value="ABOVE">Por arriba (ABOVE)</option>
                 <option value="BELOW">Por abajo (BELOW)</option>
               </Field>
-              <ErrorMessage name="type" component="div" className="text-red-600 text-sm" />
+              <ErrorMessage name="type" component="div" className="text-red-600 text-sm mt-1" />
             </div>
 
-            <button type="submit" disabled={isSubmitting} className="w-full rounded-xl px-4 py-2 bg-black text-white disabled:opacity-60">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn-primary w-full disabled:opacity-60"
+            >
               {isSubmitting ? 'Enviando…' : 'Registrar alerta'}
             </button>
           </Form>
