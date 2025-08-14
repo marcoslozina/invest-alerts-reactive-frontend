@@ -18,8 +18,8 @@ type Options = {
 };
 
 // Timer types cross-env (browser/Node)
-type IntervalId = ReturnType<typeof window.setInterval>;
-type TimeoutId  = ReturnType<typeof window.setTimeout>;
+type IntervalId = ReturnType<typeof setInterval>;
+type TimeoutId  = ReturnType<typeof setTimeout>;
 
 function makeFake(symbols: Array<FiredAlert['symbol']>): FiredAlert {
   const sy = symbols[Math.floor(Math.random() * symbols.length)];
@@ -73,7 +73,7 @@ export function useAlertStream(opts: Options = {}) {
       if (!import.meta.env.DEV) return;
       if (simTimerRef.current) return;
       setConnected(true);
-      simTimerRef.current = window.setInterval(() => {
+      simTimerRef.current = setInterval(() => {
         const fake = makeFake(['BTC', 'ETH', 'SOL']);
         setEvents(prev => [fake, ...prev].slice(0, maxEvents));
       }, 2500);
@@ -87,7 +87,7 @@ export function useAlertStream(opts: Options = {}) {
         setError(null);
 
         // Si en 1.5s no llega nada, y estamos en DEV, arrancamos simulación
-        firstMessageTimerRef.current = window.setTimeout(() => {
+        firstMessageTimerRef.current = setTimeout(() => {
           if (!connected && simulateInDev && import.meta.env.DEV) startSim();
         }, 1500);
 
@@ -110,12 +110,12 @@ export function useAlertStream(opts: Options = {}) {
           setError('SSE connection error');
           es.close();
           if (simulateInDev && import.meta.env.DEV) startSim();
-          reconnectRef.current = window.setTimeout(() => startSSE(), reconnectMs);
+          reconnectRef.current = setTimeout(() => startSSE(), reconnectMs);
         };
       } catch (err: unknown) {
         setError(getErrorMessage(err));
         if (simulateInDev && import.meta.env.DEV) startSim();
-        reconnectRef.current = window.setTimeout(() => startSSE(), reconnectMs);
+        reconnectRef.current = setTimeout(() => startSSE(), reconnectMs);
       }
     };
 
