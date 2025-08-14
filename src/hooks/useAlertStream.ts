@@ -17,6 +17,10 @@ type Options = {
   reconnectMs?: number;       // default: 2000
 };
 
+// Timer types cross-env (browser/Node)
+type IntervalId = ReturnType<typeof window.setInterval>;
+type TimeoutId  = ReturnType<typeof window.setTimeout>;
+
 function makeFake(symbols: Array<FiredAlert['symbol']>): FiredAlert {
   const sy = symbols[Math.floor(Math.random() * symbols.length)];
   const base = sy === 'BTC' ? 30000 : sy === 'ETH' ? 2000 : 150;
@@ -33,6 +37,12 @@ function makeFake(symbols: Array<FiredAlert['symbol']>): FiredAlert {
   };
 }
 
+function getErrorMessage(err: unknown): string {
+  if (err instanceof Error) return err.message;
+  if (typeof err === 'string') return err;
+  try { return JSON.stringify(err); } catch { return 'Unknown error'; }
+}
+
 export function useAlertStream(opts: Options = {}) {
   const {
     url = '/alerts/stream',
@@ -46,12 +56,11 @@ export function useAlertStream(opts: Options = {}) {
   const [error, setError] = useState<string | null>(null);
 
   const esRef = useRef<EventSource | null>(null);
-  const simTimerRef = useRef<number | null>(null);
-  const reconnectRef = useRef<number | null>(null);
-  const firstMessageTimerRef = useRef<number | null>(null);
+  const simTimerRef = useRef<IntervalId | null>(null);
+  const reconnectRef = useRef<TimeoutId | null>(null);
+  const firstMessageTimerRef = useRef<TimeoutId | null>(null);
 
   useEffect(() => {
-    // Limpia todo helper
     const clearAll = () => {
       if (esRef.current) { esRef.current.close(); esRef.current = null; }
       if (simTimerRef.current) { clearInterval(simTimerRef.current); simTimerRef.current = null; }
@@ -61,7 +70,7 @@ export function useAlertStream(opts: Options = {}) {
 
     const startSim = () => {
       if (!simulateInDev) return;
-      if (!import.meta.env.DEV) return; // simulador solo en dev
+      if (!import.meta.env.DEV) return;
       if (simTimerRef.current) return;
       setConnected(true);
       simTimerRef.current = window.setInterval(() => {
@@ -84,27 +93,27 @@ export function useAlertStream(opts: Options = {}) {
 
         es.onopen = () => {
           setConnected(true);
-          // si se conectó el real, apagamos simulador
           if (simTimerRef.current) { clearInterval(simTimerRef.current); simTimerRef.current = null; }
         };
 
-        es.onmessage = (e) => {
+        es.onmessage = (e: MessageEvent<string>) => {
           try {
             const payload = JSON.parse(e.data) as FiredAlert;
             setEvents(prev => [payload, ...prev].slice(0, maxEvents));
-          } catch { /* ignore parse errors */ }
+          } catch {
+            // ignore parse errors
+          }
         };
 
         es.onerror = () => {
           setConnected(false);
           setError('SSE connection error');
           es.close();
-          // si falla, intentamos reconectar y (en dev) simulamos
           if (simulateInDev && import.meta.env.DEV) startSim();
           reconnectRef.current = window.setTimeout(() => startSSE(), reconnectMs);
         };
-      } catch (err: any) {
-        setError(err?.message ?? 'SSE init error');
+      } catch (err: unknown) {
+        setError(getErrorMessage(err));
         if (simulateInDev && import.meta.env.DEV) startSim();
         reconnectRef.current = window.setTimeout(() => startSSE(), reconnectMs);
       }
@@ -112,7 +121,7 @@ export function useAlertStream(opts: Options = {}) {
 
     startSSE();
     return () => { clearAll(); };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, simulateInDev, maxEvents, reconnectMs]);
 
   return { events, connected, error };
