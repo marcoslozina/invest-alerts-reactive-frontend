@@ -55,7 +55,7 @@
     "@types/storybook__react": "^4.0.2",
     "@typescript-eslint/eslint-plugin": "^8.38.0",
     "@typescript-eslint/parser": "^8.38.0",
-    "@vitejs/plugin-react": "^4.6.0",
+    "@vitejs/plugin-react": "^6.0.3",
     "@vitest/coverage-v8": "^3.2.4",
     "autoprefixer": "^10.4.21",
     "babel-jest": "^30.0.5",
@@ -82,7 +82,7 @@
     "ts-node": "^10.9.2",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.35.1",
-    "vite": "^7.0.4"
+    "vite": "^8.1.5"
   },
   "lint-staged": {
     "*.{ts,tsx,js,jsx}": [
