@@ -1,6 +1,6 @@
 # 🚀 Invest Alerts – React Frontend
 
-Frontend profesional para el sistema **Invest Alerts**, una app de alertas de precios de criptomonedas construida con React 19 + Vite. Este proyecto está pensado para ser **moderno, escalable y de clase mundial**, ideal como template base o para proyectos productivos reales.
+Professional frontend for the **Invest Alerts** system, a crypto price alerting app built with React 19 + Vite. This project is designed to be **modern, scalable, and world-class** — ideal as a base template or for real production projects.
 
 ---
 
@@ -15,36 +15,36 @@ Frontend profesional para el sistema **Invest Alerts**, una app de alertas de pr
 
 ---
 
-## ✨ Features implementadas
+## ✨ Implemented Features
 
-✅ Modularización con estructura por capas  
-✅ Tailwind CSS 4  
-✅ Internacionalización (`i18next`, `react-i18next`)  
-✅ SEO con `react-helmet-async`  
-✅ Error boundaries globales  
-✅ Lazy loading y `React.Suspense`  
-✅ E2E testing con Cypress  
-✅ Unit testing con **Jest** + Testing Library  
-✅ Mock Server de backend para tests  
-✅ CI/CD con GitHub Actions + Vercel  
-✅ Coverage automático con **Codecov**  
-✅ Storybook 9 para UI components  
-✅ Husky + lint-staged para pre-commits  
-✅ ESLint + Prettier integrados  
-✅ Compatibilidad con React 19
+✅ Modularization with a layered structure
+✅ Tailwind CSS 4
+✅ Internationalization (`i18next`, `react-i18next`)
+✅ SEO with `react-helmet-async`
+✅ Global error boundaries
+✅ Lazy loading and `React.Suspense`
+✅ E2E testing with Cypress
+✅ Unit testing with **Jest** + Testing Library
+✅ Backend mock server for tests
+✅ CI/CD with GitHub Actions + Vercel
+✅ Automatic coverage with **Codecov**
+✅ Storybook 9 for UI components
+✅ Husky + lint-staged for pre-commits
+✅ ESLint + Prettier integrated
+✅ React 19 compatibility
 
 ---
 
-## 🧰 Tecnologías principales
+## 🧰 Main Technologies
 
-- ⚛️ React 19 (con TypeScript)
+- ⚛️ React 19 (with TypeScript)
 - ⚡ Vite
 - 🌐 React Router 7
 - 🎨 Tailwind CSS
 - 🧪 Jest + React Testing Library
 - 🧪 Cypress (E2E)
 - 📚 Storybook 9
-- 🌍 i18next (multi idioma)
+- 🌍 i18next (multi-language)
 - 🔒 Husky + lint-staged
 - 💡 react-helmet-async
 - 📦 Axios
@@ -52,54 +52,54 @@ Frontend profesional para el sistema **Invest Alerts**, una app de alertas de pr
 
 ---
 
-## 🚀 Scripts disponibles
+## 🚀 Available Scripts
 
 ```bash
-npm run dev         # Ejecuta la app en desarrollo
-npm run build       # Compila para producción
-npm run preview     # Sirve el build localmente
-npm run lint        # Corre ESLint
-npm run format      # Formatea con Prettier
-npm run test        # Corre tests unitarios con Jest
-npm run coverage    # Genera reporte de cobertura
-npm run e2e         # Abre Cypress
-npm run storybook   # Abre Storybook en localhost:6006
+npm run dev         # Run the app in development mode
+npm run build       # Build for production
+npm run preview     # Serve the build locally
+npm run lint        # Run ESLint
+npm run format      # Format with Prettier
+npm run test        # Run unit tests with Jest
+npm run coverage    # Generate coverage report
+npm run e2e         # Open Cypress
+npm run storybook   # Open Storybook on localhost:6006
 ```
 
 ---
 
-## 📁 Estructura del proyecto
+## 📁 Project Structure
 
-![Estructura del proyecto](./docs/directory-structure.png)
-
----
-
-## 🌍 i18n (idiomas)
-
-El proyecto está preparado para internacionalización. Idiomas disponibles:
-
-- 🇺🇸 Inglés (`en`)
-- 🇪🇸 Español (`es`)
-
-Podés agregar nuevos idiomas editando la carpeta `src/locales/`.
+![Project structure](./docs/directory-structure.png)
 
 ---
 
-## 🧪 Tests y cobertura
+## 🌍 i18n (languages)
 
-- Tests unitarios con **Jest**
-- Mock del backend usando `__mocks__` y `jest.mock(...)`
-- E2E tests con **Cypress**
-- Cobertura publicada automáticamente en [Codecov](https://codecov.io/gh/marcoslozina/invest-alerts-reactive-frontend)
+The project is set up for internationalization. Available languages:
 
----
+- 🇺🇸 English (`en`)
+- 🇪🇸 Spanish (`es`)
 
-## 📦 Deploy automático
-
-El proyecto se despliega automáticamente en [Vercel](https://vercel.com/dashboard), al hacer push a la rama `main`.
+You can add new languages by editing the `src/locales/` folder.
 
 ---
 
-## 📄 Licencia
+## 🧪 Tests and Coverage
+
+- Unit tests with **Jest**
+- Backend mocking using `__mocks__` and `jest.mock(...)`
+- E2E tests with **Cypress**
+- Coverage automatically published to [Codecov](https://codecov.io/gh/marcoslozina/invest-alerts-reactive-frontend)
+
+---
+
+## 📦 Automatic Deploy
+
+The project deploys automatically to [Vercel](https://vercel.com/dashboard) on every push to the `main` branch.
+
+---
+
+## 📄 License
 
 MIT © [Marcos Lozina](https://github.com/marcoslozina)
